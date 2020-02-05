@@ -1,0 +1,7 @@
+D:\Programming\OneDrive - Global USS\Crestron Modules\Mat\SIMPLSharp Projects\WebSocketClient\WebSocketClient\bin\Debug\WebSocketClient.dll
+D:\Programming\OneDrive - Global USS\Crestron Modules\Mat\SIMPLSharp Projects\WebSocketClient\WebSocketClient\bin\Debug\WebSocketClient.pdb
+D:\Programming\OneDrive - Global USS\Crestron Modules\Mat\SIMPLSharp Projects\WebSocketClient\WebSocketClient\bin\Debug\SimplSharpCustomAttributesInterface.dll
+D:\Programming\OneDrive - Global USS\Crestron Modules\Mat\SIMPLSharp Projects\WebSocketClient\WebSocketClient\bin\Debug\SimplSharpHelperInterface.dll
+D:\Programming\OneDrive - Global USS\Crestron Modules\Mat\SIMPLSharp Projects\WebSocketClient\WebSocketClient\obj\Debug\ResolveAssemblyReference.cache
+D:\Programming\OneDrive - Global USS\Crestron Modules\Mat\SIMPLSharp Projects\WebSocketClient\WebSocketClient\obj\Debug\WebSocketClient.dll
+D:\Programming\OneDrive - Global USS\Crestron Modules\Mat\SIMPLSharp Projects\WebSocketClient\WebSocketClient\obj\Debug\WebSocketClient.pdb
