@@ -1,0 +1,70 @@
+#SYMBOL_NAME "Web Socket Client"
+
+#INCLUDEPATH "D:\\Programming\\OneDrive - Global USS\\Crestron Modules\\Mat\\SIMPLSharp Projects\\WebSocketClient\\WS_Client\\WS_Client\\bin\\Debug"
+#USER_SIMPLSHARP_LIBRARY "WS_Client"
+
+Digital_Input Connect, Disconnect;
+String_Input Command[65534];
+
+Digital_Output IsConnected;
+String_Output ResultCode;
+String_Output Response;
+
+String_Parameter _skip_, _skip_, _skip_, Host[100];
+Integer_Parameter Port;
+Integer_Parameter Reconnect;
+String_Parameter ID[100];
+
+Client _client;
+
+push Connect
+{
+    if(Len(Host) > 0 && Port > 0)
+    {
+        _client.Connect(Host, Port);
+    }
+}
+
+push Disconnect
+{
+    _client.Disconnect();
+}
+
+threadsafe change Command
+{
+    string com[65534];
+
+    com = Command;
+
+    if(IsConnected)
+    {
+        _client.SendData(com);
+    }
+}
+
+callback function NewConnectionStatus(integer status, string rCode)
+{
+    if(status = 1)
+    {
+        IsConnected = ON;
+    }
+    else
+    {
+        IsConnected = OFF;
+    }
+
+    ResultCode = rCode;
+}
+
+callback function NewDataReceived(string data)
+{
+    Response = data;
+}
+
+function Main()
+{
+    _client.ID = ID;
+    _client.AutoReconnect = Reconnect;
+    RegisterDelegate(_client, onConnectionStatus, NewConnectionStatus);
+    RegisterDelegate(_client, onDataReceived, NewDataReceived);
+}
