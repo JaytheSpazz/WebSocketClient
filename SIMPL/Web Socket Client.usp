@@ -15,7 +15,7 @@ Integer_Parameter Port;
 Integer_Parameter Reconnect;
 String_Parameter ID[100];
 
-Client _client;
+WsClient _client;
 
 push Connect
 {

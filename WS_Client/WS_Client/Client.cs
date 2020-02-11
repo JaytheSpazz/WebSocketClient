@@ -6,7 +6,7 @@ using Crestron.SimplSharp.CrestronWebSocketClient;
 
 namespace WS_Client
 {
-    public class Client
+    public class WsClient
     {
         private WebSocketClient _client;
         private bool connectionRequested = false;
@@ -19,8 +19,8 @@ namespace WS_Client
         public ConnectionStatus onConnectionStatus { get; set; }
         public DataReceived onDataReceived { get; set; }
 
-        public EventHandler<ConnectionEventArgs> ConnectionStatusChange;
-        public EventHandler<ReceiveDataEventArgs> ReceiveDataChange;
+        public event EventHandler<ConnectionEventArgs> ConnectionStatusChange;
+        public event EventHandler<ReceiveDataEventArgs> ReceiveDataChange;
 
         public string ID { get; set; }
         public ushort IsConnected
@@ -42,7 +42,7 @@ namespace WS_Client
         /// SIMPL+ can only execute the default constructor. If you have variables that require initialization, please
         /// use an Initialize method
         /// </summary>
-        public Client()
+        public WsClient()
         {
             _client = new WebSocketClient();
 
@@ -357,6 +357,27 @@ namespace WS_Client
         {
             try
             {
+                if (resultCode == WebSocketClient.WEBSOCKET_RESULT_CODES.WEBSOCKET_CLIENT_SUCCESS)
+                {
+                    /*byte[] data;
+                    WebSocketClient.WEBSOCKET_PACKET_TYPES opCode;
+
+                    _client.Receive(out data, out opCode);
+
+                    var sData = Encoding.ASCII.GetString(data, 0, data.Length);
+
+                    ReceiveDataEventArgs e = new ReceiveDataEventArgs();
+                    e.ID = ID;
+                    e.Data = sData;
+
+                    OnReceiveDataChange(e);
+
+                    if (onDataReceived != null)
+                    {
+                        onDataReceived(sData);
+                    }*/
+                }
+
                 return 1;
             }
             catch (SocketException se)
