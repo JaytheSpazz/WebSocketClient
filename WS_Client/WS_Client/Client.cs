@@ -111,6 +111,31 @@ namespace WS_Client
             }
         }
 
+        public void TemporaryDisconnect()
+        {
+            try
+            {
+                if (connectionRequested && isConnected)
+                {
+                    _client.DisconnectAsync(this);
+                }
+            }
+            catch (SocketException se)
+            {
+                if (debugMode)
+                {
+                    ErrorLog.Exception(string.Format("WebSocketCleint ID {0} SocketException Occured in TemporaryDisconnect", ID), se);
+                }
+            }
+            catch (Exception e)
+            {
+                if (debugMode)
+                {
+                    ErrorLog.Exception(string.Format("WebSocketCleint ID {0} Exception Occured in TemporaryDisconnect", ID), e);
+                }
+            }
+        }
+
         public void SendData(string data)
         {
             try
